@@ -1,0 +1,12 @@
+[flake8]
+exclude =
+    # launch config and other VSCode files
+    .vscode/,
+    # python virtual environment
+    venv/,
+    # git directory
+    .git/
+max-line-length = 110
+per_file_ignores =
+    # import test cases to run them from the command line
+    tests/__init__.py:F401
