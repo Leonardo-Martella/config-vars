@@ -3,10 +3,12 @@ import collections.abc
 import json
 import os
 import types
+from importlib import import_module  # to get the absolute path to the package
 
 
 _SETTINGS = {
-    "storage_dir": os.path.expanduser("~/Desktop/configvars"),  # TODO: change this to package ressource ?
+    # TODO: better way to get 'store' directory path ?
+    "storage_dir": os.path.join(import_module(__package__).__spec__.origin.rstrip("__init__.py"), "store"),
     "file_name": "{name}.json",  # no forward slash here
 }
 
