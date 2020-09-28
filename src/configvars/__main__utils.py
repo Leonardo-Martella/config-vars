@@ -2,6 +2,7 @@
 import collections
 import operator
 import re
+import sys
 
 
 ReTypeMatch = collections.namedtuple("ReTypeMatch", "re_match type constructor", defaults=(None,))
@@ -66,6 +67,8 @@ def parse_key_value(s):
 def get_vars_dict():
     """Ask the user for the variables to store."""
     vars_dict = {}
+    msg = "Enter the variables you want to store. An empty string will save the variables and exit."
+    sys.stdout.write(msg + "\n")
     while True:
         src = input(">>> ")
         if src == "":
@@ -73,8 +76,9 @@ def get_vars_dict():
         try:
             key, value = parse_key_value(src)
         except Exception as e:
-            print(e)
+            sys.stdout.write(e + "\n")
         else:
             vars_dict[key] = value
-            print(f"key: {key} ({type(key).__name__}), value: {value} ({type(value).__name__})")
+            msg = f"key: {key} ({type(key).__name__}), value: {value} ({type(value).__name__})"
+            sys.stdout.write(msg + "\n")
     return vars_dict
