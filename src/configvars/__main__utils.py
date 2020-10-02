@@ -31,6 +31,14 @@ def parse_key_value(s):
     ('FLOAT', 2e-05)
     >>> parse_key_value("FLOAT = -2E-5")
     ('FLOAT', -2e-05)
+    >>> parse_key_value("9HELLO = 5")
+    Traceback (most recent call last):
+        ...
+    SyntaxError: invalid syntax
+    >>> parse_key_value("MY_LIST = [1, 2]")
+    Traceback (most recent call last):
+        ...
+    TypeError: invalid type used. allowed types: int, float, str
     """
     if not bool(re.fullmatch(r"[a-zA-Z_]\w* ?= ?.+", s)):
         raise SyntaxError("invalid syntax")
