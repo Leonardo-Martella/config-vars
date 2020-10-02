@@ -9,4 +9,7 @@ exclude =
 max-line-length = 110
 per_file_ignores =
     # import test cases to run them from the command line
-    tests/__init__.py:F401
+    tests/__init__.py:F401,
+    # ignore E501 line too long for setup.py which contains the 'long_description' of the project
+    setup.py:E501
+
