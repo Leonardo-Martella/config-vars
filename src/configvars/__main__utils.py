@@ -35,9 +35,9 @@ def parse_key_value(s):
     if not bool(re.fullmatch(r"[a-zA-Z_]\w* ?= ?.+", s)):
         raise SyntaxError("invalid syntax")
 
+    # not None since the regex above matched
     key_match = re.match(r"[a-zA-Z_]\w*", s)
     value_match = re.search(r"= ?.+", s)
-    assert key_match is not None and value_match is not None
 
     value = value_match.group().lstrip("= ")
     re_type_matches = [
