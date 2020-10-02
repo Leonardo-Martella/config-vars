@@ -84,11 +84,11 @@ class _AttrFrozenDict:
     >>> del fd["MAIL_PASSWORD"]
     Traceback (most recent call last):
         ...
-    storage.FrozenError: cannot delete item
+    configvars.storage.FrozenError: cannot delete item
     >>> fd.MAIL_PASSWORD = "mypass"
     Traceback (most recent call last):
         ...
-    storage.FrozenError: cannot set attribute
+    configvars.storage.FrozenError: cannot set attribute
     """
     __setattr__ = _frozen("cannot set attribute")
     __setitem__ = _frozen("cannot set item")
