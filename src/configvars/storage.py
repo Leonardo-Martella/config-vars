@@ -1,5 +1,5 @@
 """A collection of storage-related classes, functions and variables."""
-import collections.abc
+from collections import abc
 import json
 import os
 import types
@@ -135,7 +135,7 @@ class _AttrFrozenDict:
             indicating that an object of type 'type(self)' cannot be
             compared to an object of type 'type(other)'
         """
-        if isinstance(other, collections.abc.MutableMapping):
+        if isinstance(other, abc.MutableMapping):
             return self._data == other
         try:
             return self._data == other._data
